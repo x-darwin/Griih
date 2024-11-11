@@ -29,48 +29,48 @@ export function ContactSection() {
 
           <Card className="glassmorphism border-0">
             <CardHeader className="text-center pb-4">
-              <MessageCircle className="h-12 w-12 mx-auto text-purple-400 mb-4" />
+              <MessageCircle className="h-12 w-12 mx-auto text-primary mb-4" />
               <h3 className="text-2xl font-semibold">Send us a Message</h3>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-gray-300">
+                    <label htmlFor="name" className="text-sm font-medium">
                       Name
                     </label>
                     <Input
                       id="name"
                       placeholder="Your name"
-                      className="bg-black/50 border-white/10"
+                      className="bg-background/50 border-border"
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-gray-300">
+                    <label htmlFor="email" className="text-sm font-medium">
                       Email
                     </label>
                     <Input
                       id="email"
                       type="email"
                       placeholder="your@email.com"
-                      className="bg-black/50 border-white/10"
+                      className="bg-background/50 border-border"
                       required
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium text-gray-300">
+                  <label htmlFor="message" className="text-sm font-medium">
                     Message
                   </label>
                   <Textarea
                     id="message"
                     placeholder="Your message..."
-                    className="bg-black/50 border-white/10 min-h-[150px]"
+                    className="bg-background/50 border-border min-h-[150px] resize-none"
                     required
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full bg-white text-black hover:bg-gray-200">
+                <Button type="submit" size="lg" className="w-full">
                   Send Message
                 </Button>
               </form>

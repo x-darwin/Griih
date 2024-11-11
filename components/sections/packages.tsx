@@ -2,9 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Check } from "lucide-react";
+import { Check, Shield, CreditCard, ThumbsUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import { PaymentCardIcons } from "@/components/payment/payment-card-icons";
 
 const packages = [
   {
@@ -36,6 +37,24 @@ const packages = [
       "Premium audio quality",
     ],
     popular: true,
+  },
+];
+
+const securityFeatures = [
+  {
+    icon: CreditCard,
+    title: "Accepted Cards",
+    description: "All major cards accepted",
+  },
+  {
+    icon: Shield,
+    title: "Secure Checkout",
+    description: "256-bit SSL encryption",
+  },
+  {
+    icon: ThumbsUp,
+    title: "Satisfaction Guaranteed",
+    description: "30-day money back guarantee",
   },
 ];
 
@@ -84,10 +103,21 @@ export function PackagesSection() {
                     ))}
                   </ul>
                 </CardContent>
-                <CardFooter>
+                <CardFooter className="flex flex-col space-y-6">
                   <Button asChild className="w-full" size="lg">
                     <Link href="/payment">Choose Plan</Link>
                   </Button>
+                  <div className="w-full space-y-4">
+                    <PaymentCardIcons />
+                    <div className="grid grid-cols-3 gap-4 text-center text-sm">
+                      {securityFeatures.map((feature) => (
+                        <div key={feature.title} className="flex flex-col items-center space-y-2">
+                          <feature.icon className="h-5 w-5 text-muted-foreground" />
+                          <span className="text-xs text-muted-foreground">{feature.description}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </CardFooter>
               </Card>
             ))}

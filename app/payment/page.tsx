@@ -1,13 +1,11 @@
 "use client";
 
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import { PaymentForm } from "@/components/payment/payment-form";
 import { PaymentCardIcons } from "@/components/payment/payment-card-icons";
 
 export default function PaymentPage() {
-  const ref = useScrollAnimation();
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -18,7 +16,7 @@ export default function PaymentPage() {
   return (
     <main className="min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-4">
-        <div ref={ref} className="animate-on-scroll max-w-2xl mx-auto space-y-8">
+        <div className="max-w-2xl mx-auto space-y-8">
           <Card className="glassmorphism border-0">
             <CardHeader>
               <h1 className="text-3xl font-bold text-center">Complete Your Order</h1>

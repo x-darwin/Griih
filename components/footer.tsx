@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
+import { PaymentCardIcons } from "@/components/payment/payment-card-icons";
 
 export function Footer() {
   return (
@@ -14,6 +15,9 @@ export function Footer() {
             <p className="text-sm text-muted-foreground">
               Your premium entertainment solution
             </p>
+            <div className="pt-2">
+              <PaymentCardIcons />
+            </div>
           </div>
           
           <div className="space-y-4">

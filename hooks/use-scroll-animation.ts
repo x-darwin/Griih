@@ -10,13 +10,16 @@ export function useScrollAnimation() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-up");
+            // Small delay to ensure smooth animation
+            setTimeout(() => {
+              entry.target.classList.add("animate-fade-up");
+            }, 100);
           }
         });
       },
       {
         threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
+        rootMargin: "50px",
       }
     );
 
@@ -25,15 +28,11 @@ export function useScrollAnimation() {
       observer.observe(element);
     });
 
-    const currentRef = ref.current;
-
     return () => {
-      if (currentRef) {
-        const elements = currentRef.querySelectorAll(".animate-on-scroll");
-        elements.forEach((element) => {
-          observer.unobserve(element);
-        });
-      }
+      const elements = ref.current?.querySelectorAll(".animate-on-scroll") || [];
+      elements.forEach((element) => {
+        observer.unobserve(element);
+      });
     };
   }, []);
 

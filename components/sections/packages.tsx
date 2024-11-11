@@ -60,12 +60,12 @@ const securityFeatures = [
 
 export function PackagesSection() {
   return (
-    <section className="py-16" id="packages">
+    <section className="py-20" id="packages">
       <div className="container mx-auto px-4">
         <div className="space-y-12">
           <div className="text-center space-y-4">
-            <h2 className="text-3xl font-bold from-primary to-purple-400">Choose Your Plan</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold from-primary to-purple-400">Choose Your Plan</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Select the perfect streaming package for your entertainment needs.
             </p>
           </div>
@@ -80,40 +80,40 @@ export function PackagesSection() {
               >
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-primary text-primary-foreground">
+                    <Badge className="bg-primary text-primary-foreground px-6 py-1.5 text-sm">
                       Most Popular
                     </Badge>
                   </div>
                 )}
-                <CardHeader>
-                  <h3 className="text-2xl font-bold">{pkg.name}</h3>
-                  <p className="text-muted-foreground">{pkg.description}</p>
+                <CardHeader className="space-y-4 pb-8">
+                  <h3 className="text-3xl font-bold">{pkg.name}</h3>
+                  <p className="text-lg text-muted-foreground">{pkg.description}</p>
                 </CardHeader>
-                <CardContent>
-                  <div className="mb-6">
-                    <span className="text-4xl font-bold">{pkg.price}</span>
-                    <span className="text-muted-foreground">{pkg.period}</span>
+                <CardContent className="space-y-8">
+                  <div className="mb-8">
+                    <span className="text-5xl font-bold">{pkg.price}</span>
+                    <span className="text-xl text-muted-foreground ml-2">{pkg.period}</span>
                   </div>
-                  <ul className="space-y-3">
+                  <ul className="space-y-4">
                     {pkg.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-primary" />
-                        <span>{feature}</span>
+                      <li key={feature} className="flex items-center gap-4">
+                        <Check className="h-6 w-6 text-primary shrink-0" />
+                        <span className="text-lg">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </CardContent>
-                <CardFooter className="flex flex-col space-y-6">
-                  <Button asChild className="w-full" size="lg">
+                <CardFooter className="flex flex-col space-y-8 pt-8">
+                  <Button asChild className="w-full h-14 text-lg" size="lg">
                     <Link href="/payment">Choose Plan</Link>
                   </Button>
-                  <div className="w-full space-y-4">
+                  <div className="w-full space-y-6">
                     <PaymentCardIcons />
-                    <div className="grid grid-cols-3 gap-4 text-center text-sm">
+                    <div className="grid grid-cols-3 gap-4 text-center">
                       {securityFeatures.map((feature) => (
                         <div key={feature.title} className="flex flex-col items-center space-y-2">
-                          <feature.icon className="h-5 w-5 text-muted-foreground" />
-                          <span className="text-xs text-muted-foreground">{feature.description}</span>
+                          <feature.icon className="h-6 w-6 text-muted-foreground" />
+                          <span className="text-sm text-muted-foreground">{feature.description}</span>
                         </div>
                       ))}
                     </div>

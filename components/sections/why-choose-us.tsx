@@ -45,18 +45,18 @@ export function WhyChooseUsSection() {
             <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400">
               Why Choose StreamVault?
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-xl text-muted-foreground">
               Experience the difference with our premium features and unmatched service quality.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {features.map((feature) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {features.slice(0, 2).map((feature) => (
               <div
                 key={feature.title}
                 className={cn(
                   "group relative rounded-xl backdrop-blur-sm",
-                  "p-8 h-[280px] transition-all duration-300 hover:scale-105"
+                  "p-10 h-[300px] transition-all duration-300 hover:scale-105"
                 )}
               >
                 <div className={cn(
@@ -64,24 +64,58 @@ export function WhyChooseUsSection() {
                   feature.gradient
                 )} />
                 
-                <div className="relative space-y-6">
+                <div className="relative space-y-8">
                   <div className={cn(
-                    "h-16 w-16 rounded-xl flex items-center justify-center",
+                    "h-20 w-20 rounded-xl flex items-center justify-center",
                     "bg-gradient-to-br shadow-lg",
                     feature.gradient
                   )}>
-                    <feature.icon className={cn("h-8 w-8", feature.iconColor)} />
+                    <feature.icon className={cn("h-10 w-10", feature.iconColor)} />
                   </div>
                   
                   <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">{feature.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <h3 className="text-2xl font-semibold">{feature.title}</h3>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
                 </div>
               </div>
             ))}
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:col-span-2">
+              {features.slice(2).map((feature) => (
+                <div
+                  key={feature.title}
+                  className={cn(
+                    "group relative rounded-xl backdrop-blur-sm",
+                    "p-8 h-[250px] transition-all duration-300 hover:scale-105"
+                  )}
+                >
+                  <div className={cn(
+                    "absolute inset-0 rounded-xl bg-gradient-to-br opacity-20",
+                    feature.gradient
+                  )} />
+                  
+                  <div className="relative space-y-6">
+                    <div className={cn(
+                      "h-16 w-16 rounded-xl flex items-center justify-center",
+                      "bg-gradient-to-br shadow-lg",
+                      feature.gradient
+                    )}>
+                      <feature.icon className={cn("h-8 w-8", feature.iconColor)} />
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <h3 className="text-xl font-semibold">{feature.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

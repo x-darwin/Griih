@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { cn } from "@/lib/utils";
 
 const brands = [
   { name: "Netflix", logo: "/brands/netflix.svg" },
@@ -18,25 +17,27 @@ const brands = [
 
 export function TrustedBySection() {
   return (
-    <section className="py-8 md:py-16">
+    <section className="py-12 md:py-20 overflow-hidden">
       <div className="container mx-auto px-4">
         <div>
-          <h2 className="text-center text-lg md:text-xl font-semibold mb-6 md:mb-8 text-foreground">
+          <h2 className="text-center text-lg md:text-xl font-semibold mb-8 md:mb-12 text-foreground">
             Trusted by Leading Entertainment Brands
           </h2>
           <div className="overflow-hidden">
-            <div className="flex animate-infinite-scroll space-x-8">
-              {[...brands, ...brands].map((brand, index) => (
+            <div className="flex space-x-12 animate-infinite-scroll hover:pause">
+              {[...brands, ...brands, ...brands].map((brand, index) => (
                 <div
                   key={`${brand.name}-${index}`}
-                  className="w-24 md:w-32 h-8 md:h-12 relative brightness-0 hover:scale-110 transition-all duration-300 flex-shrink-0"
+                  className="w-32 md:w-40 h-12 md:h-16 grayscale hover:grayscale-0 hover:scale-110 transition-all duration-300 flex-shrink-0"
                 >
-                  <Image
-                    src={brand.logo}
-                    alt={brand.name}
-                    fill
-                    className="object-contain"
-                  />
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={brand.logo}
+                      alt={brand.name}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
               ))}
             </div>

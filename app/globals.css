@@ -63,21 +63,12 @@
 }
 
 @layer utilities {
-  .animate-on-scroll {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    will-change: transform, opacity;
+  .animate-infinite-scroll {
+    animation: infinite-scroll 30s linear infinite;
   }
 
-  .animate-on-scroll:not(.animate-fade-up) {
-    opacity: 0.01;
-    transform: translateY(20px);
-  }
-
-  .animate-fade-up {
-    opacity: 1;
-    transform: translateY(0);
+  .pause {
+    animation-play-state: paused;
   }
 
   @keyframes infinite-scroll {
@@ -85,19 +76,21 @@
       transform: translateX(0);
     }
     to {
-      transform: translateX(-50%);
+      transform: translateX(calc(-50% - 3rem));
     }
   }
 
-  .animate-infinite-scroll {
-    animation: infinite-scroll 25s linear infinite;
+  @keyframes tada {
+    0% { transform: scale(1); }
+    10%, 20% { transform: scale(0.9) rotate(-3deg); }
+    30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+    40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+    100% { transform: scale(1) rotate(0); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .animate-on-scroll {
-      opacity: 1;
-      transform: translateY(0);
-      transition: none;
+    .animate-infinite-scroll {
+      animation: none;
     }
   }
 

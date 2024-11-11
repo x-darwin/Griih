@@ -50,13 +50,13 @@ export function WhyChooseUsSection() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {features.map((feature) => (
               <div
                 key={feature.title}
                 className={cn(
                   "group relative rounded-xl backdrop-blur-sm",
-                  "p-8 transition-all duration-300 hover:scale-105"
+                  "p-8 h-[280px] transition-all duration-300 hover:scale-105"
                 )}
               >
                 <div className={cn(
@@ -64,20 +64,21 @@ export function WhyChooseUsSection() {
                   feature.gradient
                 )} />
                 
-                <div className="relative space-y-4">
+                <div className="relative space-y-6">
                   <div className={cn(
-                    "h-14 w-14 rounded-xl flex items-center justify-center",
+                    "h-16 w-16 rounded-xl flex items-center justify-center",
                     "bg-gradient-to-br shadow-lg",
                     feature.gradient
                   )}>
-                    <feature.icon className={cn("h-7 w-7", feature.iconColor)} />
+                    <feature.icon className={cn("h-8 w-8", feature.iconColor)} />
                   </div>
                   
-                  <h3 className="text-xl font-semibold">{feature.title}</h3>
-                  
-                  <p className="text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </p>
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-semibold">{feature.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}

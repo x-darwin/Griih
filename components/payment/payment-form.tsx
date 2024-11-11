@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Icons } from "@/components/icons";
 import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Card,
   CardContent,
@@ -21,16 +22,30 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { PaymentCardIcons } from "./payment-card-icons";
+import { Shield, Lock, RotateCcw } from "lucide-react";
 
 interface PaymentFormProps {
   onSubmit: (e: React.FormEvent) => void;
 }
 
-interface Package {
-  name: string;
-  price: number;
-  period: string;
-}
+const packages = [
+  {
+    id: "1year",
+    name: "1-Year Plan",
+    price: 89.99,
+    period: "year",
+    description: "Perfect for long-term entertainment",
+  },
+  {
+    id: "2year",
+    name: "2-Year Plan",
+    price: 149.99,
+    period: "2 years",
+    description: "Best value for serious streamers",
+    popular: true,
+  },
+];
 
 const additionalFeatures = [
   { id: "4k", label: "4K Ultra HD", price: 9.99 },
@@ -38,18 +53,34 @@ const additionalFeatures = [
   { id: "devices", label: "Additional Devices", price: 7.99 },
 ];
 
+const securityFeatures = [
+  {
+    icon: Shield,
+    title: "Secure Payment",
+    description: "256-bit SSL encryption",
+  },
+  {
+    icon: Lock,
+    title: "Card Security",
+    description: "All major cards accepted",
+  },
+  {
+    icon: RotateCcw,
+    title: "Money Back",
+    description: "30-day guarantee",
+  },
+];
+
 export function PaymentForm({ onSubmit }: PaymentFormProps) {
-  const [selectedPackage] = useState<Package>({
-    name: "2-Year Plan",
-    price: 149.99,
-    period: "2 years",
-  });
+  const [selectedPackageId, setSelectedPackageId] = useState("2year");
   const [couponCode, setCouponCode] = useState("");
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const [showDialog, setShowDialog] = useState(false);
 
+  const selectedPackage = packages.find((pkg) => pkg.id === selectedPackageId);
+
   const calculateTotal = () => {
-    let total = selectedPackage.price;
+    let total = selectedPackage?.price || 0;
     selectedFeatures.forEach((feature) => {
       const additionalFeature = additionalFeatures.find((f) => f.id === feature);
       if (additionalFeature) {
@@ -67,20 +98,51 @@ export function PaymentForm({ onSubmit }: PaymentFormProps) {
   return (
     <>
       <div className="space-y-8">
-        <Card>
+        <Card className="border-0 glassmorphism">
           <CardHeader>
-            <CardTitle>Order Summary</CardTitle>
-            <CardDescription>Review your selected package and options</CardDescription>
+            <CardTitle>Choose Your Package</CardTitle>
+            <CardDescription>Select the plan that works best for you</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex justify-between">
-              <span>{selectedPackage.name}</span>
-              <span>${selectedPackage.price}</span>
-            </div>
+          <CardContent className="space-y-6">
+            <RadioGroup
+              value={selectedPackageId}
+              onValueChange={setSelectedPackageId}
+              className="grid grid-cols-1 md:grid-cols-2 gap-4"
+            >
+              {packages.map((pkg) => (
+                <label
+                  key={pkg.id}
+                  className={`relative flex flex-col p-6 cursor-pointer rounded-lg border-2 transition-all
+                    ${selectedPackageId === pkg.id 
+                      ? 'border-primary bg-primary/5' 
+                      : 'border-border hover:border-primary/50'}`}
+                >
+                  <RadioGroupItem
+                    value={pkg.id}
+                    id={pkg.id}
+                    className="sr-only"
+                  />
+                  {pkg.popular && (
+                    <span className="absolute -top-3 left-4 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
+                      Most Popular
+                    </span>
+                  )}
+                  <div className="space-y-2">
+                    <h3 className="font-semibold text-lg">{pkg.name}</h3>
+                    <p className="text-muted-foreground text-sm">{pkg.description}</p>
+                    <div className="text-2xl font-bold">
+                      ${pkg.price}
+                      <span className="text-base font-normal text-muted-foreground">/{pkg.period}</span>
+                    </div>
+                  </div>
+                </label>
+              ))}
+            </RadioGroup>
+
             <div className="space-y-4">
               <Label>Additional Features</Label>
               {additionalFeatures.map((feature) => (
-                <div key={feature.id} className="flex items-center justify-between">
+                <div key={feature.id} className="flex items-center justify-between p-4 rounded-lg border bg-background/50">
                   <div className="flex items-center space-x-2">
                     <Checkbox
                       id={feature.id}
@@ -93,13 +155,15 @@ export function PaymentForm({ onSubmit }: PaymentFormProps) {
                         );
                       }}
                     />
-                    <label htmlFor={feature.id} className="text-sm">
-                      {feature.label} (+${feature.price})
+                    <label htmlFor={feature.id} className="text-sm cursor-pointer">
+                      {feature.label}
                     </label>
                   </div>
+                  <span className="text-sm font-semibold">+${feature.price}/mo</span>
                 </div>
               ))}
             </div>
+
             <div className="space-y-2">
               <Label htmlFor="coupon">Coupon Code</Label>
               <div className="flex space-x-2">
@@ -112,6 +176,7 @@ export function PaymentForm({ onSubmit }: PaymentFormProps) {
                 <Button variant="outline">Apply</Button>
               </div>
             </div>
+
             <div className="pt-4 border-t">
               <div className="flex justify-between text-lg font-semibold">
                 <span>Total</span>
@@ -122,12 +187,12 @@ export function PaymentForm({ onSubmit }: PaymentFormProps) {
         </Card>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <Card>
+          <Card className="border-0 glassmorphism">
             <CardHeader>
               <CardTitle>Payment Details</CardTitle>
               <CardDescription>Enter your payment information securely</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-6">
               <div className="grid grid-cols-1 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
@@ -185,6 +250,22 @@ export function PaymentForm({ onSubmit }: PaymentFormProps) {
                     required
                   />
                 </div>
+              </div>
+
+              <div className="pt-4">
+                <PaymentCardIcons />
+              </div>
+
+              <div className="grid grid-cols-3 gap-4 pt-4">
+                {securityFeatures.map((feature) => (
+                  <div key={feature.title} className="text-center space-y-2">
+                    <feature.icon className="h-6 w-6 mx-auto text-muted-foreground" />
+                    <div className="space-y-1">
+                      <h4 className="text-sm font-medium">{feature.title}</h4>
+                      <p className="text-xs text-muted-foreground">{feature.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </CardContent>
             <CardFooter className="flex flex-col space-y-4">

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -48,14 +48,16 @@ export function HeroSection() {
           <div className="lg:ml-auto relative w-full h-[500px] md:h-[600px]">
             <div className="relative w-full h-full">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-purple-500/20 to-pink-500/10 rounded-full blur-3xl" />
-              <Image
-                src="/streaming-devices.png"
-                alt="Streaming Devices"
-                fill
-                className="object-contain scale-110 hover:scale-105 transition-transform duration-500"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+              <div className="relative w-full h-full">
+                <Image
+                  src="/devices-mockup.png"
+                  alt="Multiple devices showing streaming content"
+                  fill
+                  className="object-contain scale-110 hover:scale-105 transition-transform duration-500"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
             </div>
           </div>
         </div>

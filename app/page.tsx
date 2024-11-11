@@ -14,12 +14,11 @@ export default function Home() {
     <div className="relative">
       <HeroSection />
       <TrustedBySection />
-      <WhyChooseUsSection />
       <FeaturesSection />
+      <WhyChooseUsSection />
+      <PackagesSection />
       <TestimonialsSection />
       <FAQsSection />
-      <ReviewsSection />
-      <PackagesSection />
       <ContactSection />
       <Footer />
     </div>

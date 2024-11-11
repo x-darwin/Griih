@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 187, 38%, 96%;
+  --foreground: 187, 35%, 15%;
+  --card: 0, 0%, 100%;
+  --card-foreground: 187, 35%, 15%;
+  --popover: 0, 0%, 100%;
+  --popover-foreground: 187, 35%, 15%;
+  --primary: 187, 75%, 40%;
+  --primary-foreground: 187, 10%, 98%;
+  --secondary: 187, 30%, 90%;
+  --secondary-foreground: 187, 35%, 15%;
+  --muted: 187, 30%, 90%;
+  --muted-foreground: 187, 25%, 35%;
+  --accent: 187, 30%, 90%;
+  --accent-foreground: 187, 35%, 15%;
+  --destructive: 0, 84.2%, 60.2%;
+  --destructive-foreground: 0, 0%, 98%;
+  --border: 187, 30%, 85%;
+  --input: 187, 30%, 85%;
+  --ring: 187, 75%, 40%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 187, 35%, 8%;
+  --foreground: 187, 10%, 98%;
+  --card: 187, 25%, 12%;
+  --card-foreground: 187, 10%, 98%;
+  --popover: 187, 35%, 8%;
+  --popover-foreground: 187, 10%, 98%;
+  --primary: 187, 75%, 40%;
+  --primary-foreground: 187, 10%, 98%;
+  --secondary: 187, 30%, 15%;
+  --secondary-foreground: 187, 10%, 98%;
+  --muted: 187, 30%, 15%;
+  --muted-foreground: 187, 25%, 60%;
+  --accent: 187, 30%, 15%;
+  --accent-foreground: 187, 10%, 98%;
+  --destructive: 0, 62.8%, 30.6%;
+  --destructive-foreground: 187, 10%, 98%;
+  --border: 187, 30%, 15%;
+  --input: 187, 30%, 15%;
+  --ring: 187, 75%, 40%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer components {
+  .glassmorphism {
+    @apply bg-white/90 backdrop-blur-lg border border-white/20 rounded-lg shadow-xl;
+  }
+}
+
+@layer utilities {
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-fade-up {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      @apply px-4;
+    }
+  }
+}

@@ -65,12 +65,27 @@ const config: Config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-50% - 3rem))' },
+        },
+        tada: {
+          '0%': { transform: 'scale(1)' },
+          '10%, 20%': { transform: 'scale(0.9) rotate(-3deg)' },
+          '30%, 50%, 70%, 90%': { transform: 'scale(1.1) rotate(3deg)' },
+          '40%, 60%, 80%': { transform: 'scale(1.1) rotate(-3deg)' },
+          '100%': { transform: 'scale(1) rotate(0)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'infinite-scroll': 'infinite-scroll 30s linear infinite',
+        tada: 'tada 1s ease-in-out infinite',
       },
     },
   },
   plugins: [require('tailwindcss-animate')],
-}
+};
+
+export default config;

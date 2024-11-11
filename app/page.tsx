@@ -7,7 +7,6 @@ import { FAQsSection } from "@/components/sections/faqs";
 import { ReviewsSection } from "@/components/sections/reviews";
 import { PackagesSection } from "@/components/sections/packages";
 import { ContactSection } from "@/components/sections/contact";
-import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
@@ -20,7 +19,6 @@ export default function Home() {
       <TestimonialsSection />
       <FAQsSection />
       <ContactSection />
-      <Footer />
     </div>
   );
 }

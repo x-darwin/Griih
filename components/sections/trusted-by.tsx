@@ -1,6 +1,5 @@
 "use client";
 
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import Image from "next/image";
 
 const brands = [
@@ -17,12 +16,10 @@ const brands = [
 ];
 
 export function TrustedBySection() {
-  const ref = useScrollAnimation();
-
   return (
     <section className="py-8 md:py-16">
       <div className="container mx-auto px-4">
-        <div ref={ref} className="animate-on-scroll">
+        <div>
           <h2 className="text-center text-lg md:text-xl font-semibold mb-6 md:mb-8 text-foreground">
             Trusted by Leading Entertainment Brands
           </h2>

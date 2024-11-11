@@ -1,19 +1,16 @@
 "use client";
 
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export function HeroSection() {
-  const ref = useScrollAnimation();
-
   return (
     <section className="pt-20 md:pt-32 pb-16 overflow-hidden">
       <div className="container mx-auto">
-        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div className="animate-on-scroll space-y-6 text-center lg:text-left">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="space-y-6 text-center lg:text-left">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400">
@@ -39,7 +36,7 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-          <div className="animate-on-scroll lg:ml-auto relative w-full h-[300px] md:h-[400px]">
+          <div className="lg:ml-auto relative w-full h-[300px] md:h-[400px]">
             <div className="relative w-full h-full">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-primary/10 rounded-full blur-3xl" />
               <div className="relative rounded-2xl overflow-hidden border border-primary/10 h-full">

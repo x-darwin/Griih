@@ -1,6 +1,5 @@
 "use client";
 
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Monitor, Smartphone, Globe, Shield, Zap, Headphones } from "lucide-react";
 
@@ -38,14 +37,12 @@ const features = [
 ];
 
 export function FeaturesSection() {
-  const ref = useScrollAnimation();
-
   return (
     <section className="py-16" id="features">
       <div className="container mx-auto px-4">
-        <div ref={ref} className="animate-on-scroll space-y-12">
+        <div className="space-y-12">
           <div className="text-center space-y-4">
-            <h2 className="text-3xl font-bold from-primary ">Premium Features</h2>
+            <h2 className="text-3xl font-bold from-primary">Premium Features</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Discover all the premium features that make StreamVault the ultimate entertainment solution.
             </p>

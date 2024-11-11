@@ -1,6 +1,5 @@
 "use client";
 
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Check } from "lucide-react";
@@ -41,12 +40,10 @@ const packages = [
 ];
 
 export function PackagesSection() {
-  const ref = useScrollAnimation();
-
   return (
     <section className="py-16" id="packages">
       <div className="container mx-auto px-4">
-        <div ref={ref} className="animate-on-scroll space-y-12">
+        <div className="space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-3xl font-bold from-primary to-purple-400">Choose Your Plan</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">

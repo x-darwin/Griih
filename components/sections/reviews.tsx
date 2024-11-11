@@ -1,6 +1,5 @@
 "use client";
 
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, CheckCircle } from "lucide-react";
@@ -66,12 +65,10 @@ const reviews = [
 ];
 
 export function ReviewsSection() {
-  const ref = useScrollAnimation();
-
   return (
     <section className="py-16" id="reviews">
       <div className="container mx-auto px-4">
-        <div ref={ref} className="animate-on-scroll space-y-12">
+        <div className="space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-3xl font-bold from-primary to-purple-400">User Reviews</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">

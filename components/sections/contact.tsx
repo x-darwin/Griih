@@ -1,6 +1,5 @@
 "use client";
 
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,8 +7,6 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { MessageCircle } from "lucide-react";
 
 export function ContactSection() {
-  const ref = useScrollAnimation();
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
@@ -20,7 +17,7 @@ export function ContactSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/50 to-background/0 pointer-events-none" />
       
       <div className="container mx-auto px-4">
-        <div ref={ref} className="animate-on-scroll space-y-12 max-w-3xl mx-auto">
+        <div className="space-y-12 max-w-3xl mx-auto">
           <div className="text-center space-y-4">
             <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400">
               Get in Touch
